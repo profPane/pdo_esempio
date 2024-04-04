@@ -1,25 +1,19 @@
 <?php
-$pdo = null;
-$result = null;
-try{
-    $pdo = new PDO("mysql:host=127.0.0.1;dbname=mariadb", "mariadb", "mariadb");
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e){
-    die("ERRORE: Impossibile stabilire una connessione al database");
-}
+$result=null;
 
-$sql = "CREATE TABLE `mariadb`.`prodotti2` (
-    `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
-    `nome` VARCHAR(300) NOT NULL,
-    `prezzo` ZECIMAL(6,2) NOT NULL,
-    PRIMARY KEY (`id`)
+require_once "connDB.php";
+
+$sql = "CREATE TABLE DB1.prodotti (
+    id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(300) NOT NULL,
+    prezzo DECIMAL(6) NOT NULL,
+    PRIMARY KEY (id)
 )";
 
-$result = $pdo->exec($sql);
-
-if ($result!=null) {
+try {
+    $result = $connDB->exec($sql);
     echo "Tabella creata con successo";
-} else {
-    echo "Tabella non creata";
+} catch (Exception $e) {
+    echo "Errore nella creazione della Tabella <br />";
+    echo $e;
 }
