@@ -1,7 +1,7 @@
 <?php
 $connDB = null;
 try{
-    $connDB = new pdo("mysql:host=127.0.0.1;", "mariadb", "mariadb");
+    $connDB = new pdo("mysql:host=127.0.0.1; dbname=mariadb", "mariadb", "mariadb");
     // Set the connDB error mode to exception
     $connDB->setAttribute(pdo::ATTR_ERRMODE, pdo::ERRMODE_EXCEPTION);
     //echo "DB OK!<br />";

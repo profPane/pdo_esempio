@@ -10,7 +10,7 @@
         } else { //dati presenti
             // codice di inserimento dati nel database
             try {
-                $sql = "INSERT INTO mariadb.prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
+                $sql = "INSERT INTO prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
                 $result = $connDB->exec($sql);
                 echo '<script> alert("Inserimento con successo")</script>';
                 //visualizzo la tabella
