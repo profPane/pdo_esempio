@@ -9,9 +9,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MariaDB",
-            "name": "serverDB",
-            "database": "mariadb",
-            "username": "mariadb"
+            "name": "mariadb",
+            "database": "DB1",
+            "username": "root"
         }
     ]
 }
