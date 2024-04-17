@@ -3,7 +3,7 @@ $result=null;
 
 require_once "connDB.php";
 
-$sql = "CREATE TABLE DB1.prodotti (
+$sql = "CREATE TABLE mariadb.prodotti (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
     nome VARCHAR(300) NOT NULL,
     prezzo DECIMAL(6,2) NOT NULL,

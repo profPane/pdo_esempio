@@ -1,7 +1,7 @@
 <?php
 require_once "connDB.php";
 
-$sql = 'SELECT nome, prezzo FROM DB1.prodotti';
+$sql = 'SELECT nome, prezzo FROM mariadb.prodotti';
 $result = $connDB ->query($sql);
 
 //echo $result;

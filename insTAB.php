@@ -1,7 +1,8 @@
 <?php
     require_once "connDB.php";
     //controllo se sono arrivato a questa pagina tramite un POST
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    //mi devo comportare da pagina di risposta?
+    if ($_SERVER["REQUEST_METHOD"] == "POST") { 
         // controllo che i campi dati che mi servono siano stati riempiti
         //prendo il campo "nome" del modulo, se esiste
         if (empty($_REQUEST['nome'])) { 
@@ -9,7 +10,7 @@
         } else { //dati presenti
             // codice di inserimento dati nel database
             try {
-                $sql = "INSERT INTO DB1.prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
+                $sql = "INSERT INTO mariadb.prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
                 $result = $connDB->exec($sql);
                 echo '<script> alert("Inserimento con successo")</script>';
                 //visualizzo la tabella
@@ -31,8 +32,8 @@
         <head></head>
         <body>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post"> 
-                <input type="text" name="nome" id="nome" placeholder="Inserisci il nome prodotto" style="width: 20%;"/>
-                <input type="prezzo" name="prezzo" id="nome" placeholder="0000.00" style="width: 10%;"/>
+                <input type="text" name="nome" id="nome" placeholder="Inserisci il nome prodotto" style="width: 30%;"/>
+                <input type="text" name="prezzo" id="prezzo" placeholder="0000.00" style="width: 15%;"/>
                 <input type="submit" value="Aggiungi prodotto">
             </form>
         </body>
