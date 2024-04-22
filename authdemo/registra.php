@@ -57,7 +57,7 @@
                     }
                 }
             }
-        printf($msg);
+        printf($msg, "");
     }
 } else {
 ?>

@@ -6,6 +6,7 @@ if (isset($_SESSION['session_id'])) {
     header('Location: dashboard.php');
     exit;
 }
+
 if (isset($_POST['login'])) {
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
@@ -31,7 +32,8 @@ if (isset($_POST['login'])) {
             session_regenerate_id();
             $_SESSION['session_id'] = session_id();
             $_SESSION['session_user'] = $user['username'];
-            
+            $_SESSION['livelloUtente'] = //preso dal DB
+            //altre informazioni utili sull'utente
             header('Location: dashboard.php');
             exit;
         }
