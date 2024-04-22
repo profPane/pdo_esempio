@@ -1,7 +1,7 @@
 <?php
 $result=null;
 
-require_once "connDB.php";
+require_once "../db/connDB.php";
 
 $sql = "CREATE TABLE prodotti (
     id INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,

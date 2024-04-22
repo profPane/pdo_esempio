@@ -1,5 +1,6 @@
 <?php
-require_once "connDB.php";
+require_once "../db/connDB.php";
+
 
 $sql = 'INSERT INTO prodotti (nome, prezzo) VALUES ("sapone liquido 100ml", 8.50)';
 $result = $connDB->exec($sql);

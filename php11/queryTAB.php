@@ -1,5 +1,5 @@
 <?php
-require_once "connDB.php";
+require_once "../db/connDB.php";
 
 $sql = 'SELECT nome, prezzo FROM mariadb.prodotti';
 $result = $connDB ->query($sql);
@@ -8,9 +8,9 @@ $result = $connDB ->query($sql);
 
 foreach ($result as $prodotto) {
     if ($prodotto['prezzo']<8)
-        echo "<span style='color: green; font-weight: bold;'>";
+        echo "<span style='background-color: green; font-weight: bold;'>";
     else
-        echo "<span style='color: red; font-weight: bold;'>";
+        echo "<span style='background-color: red; font-weight: bold;'>";
 
     echo $prodotto['nome'] . "</span> " . $prodotto['prezzo'] . "<br />";
 }

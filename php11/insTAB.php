@@ -1,6 +1,6 @@
 <?php
-    require_once "connDB.php";
-    //controllo se sono arrivato a questa pagina tramite un POST
+require_once "../db/connDB.php";
+//controllo se sono arrivato a questa pagina tramite un POST
     //mi devo comportare da pagina di risposta?
     if ($_SERVER["REQUEST_METHOD"] == "POST") { 
         // controllo che i campi dati che mi servono siano stati riempiti
@@ -10,6 +10,7 @@
         } else { //dati presenti
             // codice di inserimento dati nel database
             try {
+                $prova = 
                 $sql = "INSERT INTO prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
                 $result = $connDB->exec($sql);
                 echo '<script> alert("Inserimento con successo")</script>';

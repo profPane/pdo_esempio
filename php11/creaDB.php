@@ -1,5 +1,5 @@
 <?php
-require_once "connDB.php";
+require_once "../db/connDB.php";
 
 $sql = "CREATE DATABASE DB1;";
 
