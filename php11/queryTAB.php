@@ -2,7 +2,7 @@
 require_once "../db/connDB.php";
 
 $sql = 'SELECT nome, prezzo FROM mariadb.prodotti';
-$result = $connDB ->query($sql);
+$result = $pdo ->query($sql);
 
 //echo $result;
 

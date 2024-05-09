@@ -11,7 +11,7 @@ $sql = "CREATE TABLE prodotti (
 )";
 
 try {
-    $result = $connDB->exec($sql);
+    $result = $pdo->exec($sql);
     echo "Tabella creata con successo";
 } catch (Exception $e) {
     echo "Errore nella creazione della Tabella <br />";

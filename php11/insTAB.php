@@ -12,7 +12,7 @@ require_once "../db/connDB.php";
             try {
                 $prova = 
                 $sql = "INSERT INTO prodotti (nome, prezzo) VALUES ('{$_REQUEST['nome']}', {$_REQUEST['prezzo']})";
-                $result = $connDB->exec($sql);
+                $result = $pdo->exec($sql);
                 echo '<script> alert("Inserimento con successo")</script>';
                 //visualizzo la tabella
 ?>

@@ -20,7 +20,7 @@ if (isset($_POST['login'])) {
             WHERE username = :username
         ";
         
-        $check = $connDB->prepare($query);
+        $check = $pdo->prepare($query);
         $check->bindParam(':username', $username, PDO::PARAM_STR);
         $check->execute();
         
@@ -55,7 +55,9 @@ if (isset($_POST['login'])) {
             <h1>Login</h1>
             <input type="text" id="username" placeholder="Username" name="username">
             <input type="password" id="password" placeholder="Password" name="password">
-            <button type="submit" name="login">Accedi</button>
+            <span style="float: left"><button type="submit" name="login">Accedi</button></span>
+            <span style="float: right"><a href=registra.php>Crea un account</a></span>
+            <br />
         </form>
     </body>
 </html>

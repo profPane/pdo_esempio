@@ -1,11 +1,21 @@
 <?php
-$connDB = null;
-try{
-    $connDB = new pdo("mysql:host=127.0.0.1; dbname=mariadb", "mariadb", "mariadb");
-    // Set the connDB error mode to exception
-    $connDB->setAttribute(pdo::ATTR_ERRMODE, pdo::ERRMODE_EXCEPTION);
-    //echo "DB OK!<br />";
-} catch(Exception $e){
-    echo "Errore di accesso al DB";
-    die("ERRORE: Impossibile stabilire una connessione al database");
+$config = [
+    'db_engine' => 'mysql',
+    'db_host' => '127.0.0.1',
+    'db_name' => 'mariadb',
+    'db_user' => 'mariadb',
+    'db_password' => 'mariadb',
+];
+
+$db_config = $config['db_engine'] . ":host=".$config['db_host'] . ";dbname=" . $config['db_name'];
+
+try {
+    $pdo = new PDO($db_config, $config['db_user'], $config['db_password'], [
+        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+    ]);
+        
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+} catch (PDOException $e) {
+    exit("Impossibile connettersi al database: " . $e->getMessage());
 }

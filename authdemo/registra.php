@@ -31,27 +31,27 @@
                     WHERE username = :username
                 ";
                 
-                $check = $connDB->prepare($query);
+                $check = $pdo->prepare($query);
                 $check->bindParam(':username', $username, PDO::PARAM_STR);
                 $check->execute();
                 
                 $user = $check->fetchAll(PDO::FETCH_ASSOC);
                 
                 if (count($user) > 0) {
-                    $msg = 'Username già in uso %s';
+                    $msg = 'Username già in uso <a href="registra.php">Riprova</a>';
                 } else {
                     $query = "
                         INSERT INTO users
                         VALUES (0, :username, :password)
                     ";
                 
-                    $check = $connDB->prepare($query);
+                    $check = $pdo->prepare($query);
                     $check->bindParam(':username', $username, PDO::PARAM_STR);
                     $check->bindParam(':password', $password_hash, PDO::PARAM_STR);
                     $check->execute();
                     
                     if ($check->rowCount() > 0) {
-                        $msg = 'Registrazione eseguita con successo';
+                        $msg = 'Registrazione eseguita con successo <br /><a href="registra.php">Registra un altro utente</a><br /><a href="index.php">Torna alla Home</a>';
                     } else {
                         $msg = 'Problemi con l\'inserimento dei dati %s <br /><a href="'.$_SERVER['PHP_SELF'].'">riprova il login</a>';
                     }
@@ -67,13 +67,14 @@
     <head>
         <title>Registrazione</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="../css/style.css">
     </head>
     <body>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <h1>Registrazione</h1>
             <input type="text" id="username" placeholder="Username" name="username" maxlength="50" required>
             <input type="password" id="password" placeholder="Password" name="password" required>
+            <label for="su">SuperUser</label><input type="checkbox" id="su" name="su" value="su">
             <button type="submit" name="register">Registrati</button>
         </form>
     </body>
