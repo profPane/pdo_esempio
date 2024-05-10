@@ -4,6 +4,7 @@
         if (isset($_POST['register'])) {
             $username = $_POST['username'] ?? '';
             $password = $_POST['password'] ?? '';
+            $power = $_POST['check'] ?? 0;
             $isUsernameValid = filter_var(
                 $username,
                 FILTER_VALIDATE_REGEXP, [
@@ -42,12 +43,15 @@
                 } else {
                     $query = "
                         INSERT INTO users
-                        VALUES (0, :username, :password)
+                        VALUES (0, :username, :password, :power)
                     ";
                 
+                    $power = ($power?10:0);
+
                     $check = $pdo->prepare($query);
                     $check->bindParam(':username', $username, PDO::PARAM_STR);
                     $check->bindParam(':password', $password_hash, PDO::PARAM_STR);
+                    $check->bindParam(':power', $power , PDO::PARAM_INT);
                     $check->execute();
                     
                     if ($check->rowCount() > 0) {
@@ -74,7 +78,10 @@
             <h1>Registrazione</h1>
             <input type="text" id="username" placeholder="Username" name="username" maxlength="50" required>
             <input type="password" id="password" placeholder="Password" name="password" required>
-            <label for="su">SuperUser</label><input type="checkbox" id="su" name="su" value="su">
+            <label class="checkbox-wrapper">SuperUser
+                <input type="checkbox" name="check" value="1">
+                <span class="checkmark"></span>
+            </label>
             <button type="submit" name="register">Registrati</button>
         </form>
     </body>

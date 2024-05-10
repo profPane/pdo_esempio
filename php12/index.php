@@ -17,5 +17,5 @@ Questo è il contenuto della pagina riservata
 <?php
     printf("%s", '<br /><a href="logout.php">logout</a>');
 } else {
-    printf("<br />Effettua il %s per accedere all'area riservata", '<a href="../login.html">login</a>');
+    printf("<br />Effettua il %s per accedere all'area riservata", '<a href="login.php">login</a>');
 }

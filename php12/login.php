@@ -3,11 +3,11 @@ session_start();
 require_once "../db/connDB.php";
 
 if (isset($_SESSION['session_id'])) {
-    header('Location: dashboard.php');
+    header('Location: index.php');
     exit;
 }
 
-if (isset($_POST['login'])) {
+if (isset($_POST['login'])) { //arrivo da un modulo
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
     
@@ -15,12 +15,12 @@ if (isset($_POST['login'])) {
         $msg = 'Inserisci username e password %s';
     } else {
         $query = "
-            SELECT username, password
+            SELECT username, password, power
             FROM users
             WHERE username = :username
         ";
+        $check = $pdo->prepare($query); //mando la query al pdo
         
-        $check = $pdo->prepare($query);
         $check->bindParam(':username', $username, PDO::PARAM_STR);
         $check->execute();
         
@@ -32,15 +32,14 @@ if (isset($_POST['login'])) {
             session_regenerate_id();
             $_SESSION['session_id'] = session_id();
             $_SESSION['session_user'] = $user['username'];
-            $_SESSION['livelloUtente'] = //preso dal DB
+            $_SESSION['livelloUtente'] = $user['power']; //livello utente
             //altre informazioni utili sull'utente
-            header('Location: dashboard.php');
+            header('Location: index.php');
             exit;
         }
     }
-    
     printf($msg, '<a href="'.$_SERVER['PHP_SELF'].'">torna indietro</a>');
-} else {
+} else { //non arrivo da un modulo
 ?>
 
 <!DOCTYPE html>
