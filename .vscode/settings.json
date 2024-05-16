@@ -9,19 +9,6 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MariaDB",
-            "name": "mariadb",
-            "database": "DB1",
-            "username": "root"
-        },
-        {
-            "mysqlOptions": {
-                "authProtocol": "default",
-                "enableSsl": "Disabled"
-            },
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 3306,
-            "driver": "MariaDB",
             "database": "mariadb",
             "username": "mariadb",
             "name": "esempioPHP11"

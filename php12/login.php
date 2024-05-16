@@ -10,6 +10,7 @@ if (isset($_SESSION['session_id'])) {
 if (isset($_POST['login'])) { //arrivo da un modulo
     $username = $_POST['username'] ?? '';
     $password = $_POST['password'] ?? '';
+    $password = $_POST['power'] ?? 0;
     
     if (empty($username) || empty($password)) {
         $msg = 'Inserisci username e password %s';
