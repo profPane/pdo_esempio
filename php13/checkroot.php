@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once "./session/check.php";
 
 if (isset($_SESSION['session_id']) && $_SESSION['power']==10) {
     $session_user = htmlspecialchars($_SESSION['session_user'], ENT_QUOTES, 'UTF-8');

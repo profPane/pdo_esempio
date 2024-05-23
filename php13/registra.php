@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once "./session/check.php";
     require_once "../db/connDB.php";
     if ($_SERVER["REQUEST_METHOD"] == "POST") { 
         if (isset($_POST['register'])) {

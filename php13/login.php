@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "../db/connDB.php";
+//require_once "./session/check.php";
 
 if (isset($_SESSION['session_id'])) {
     header('Location: index.php');
@@ -39,6 +40,7 @@ if (isset($_POST['login'])) { //arrivo da un modulo
         }
     }
     printf($msg, '<a href="'.$_SERVER['PHP_SELF'].'">torna indietro</a>');
+
 } else { //non arrivo da un modulo
 ?>
 
