@@ -13,8 +13,10 @@ if (isset($_SESSION['session_id'])) {
 <body>
 Questo è il contenuto della pagina riservata<br />
 <?php if ($power<=7) { ?>
-<img src="../img/blob.jpg" alt="Blob" width="500" height="400">
-<?php } ?>
+    <img src="../img/blob.jpg" alt="Blob" >
+<? } else { ?>
+    <img src="../img/gatto.png" alt="Blob" >
+<? } ?>
 </body>
 <?php
     printf("%s", '<br /><a href="logout.php">logout</a>');
